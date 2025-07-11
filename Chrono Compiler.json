@@ -1,0 +1,429 @@
+{
+  "name": "Chrono Compiler",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1920,
+        -560
+      ],
+      "id": "3c447d7b-4a1a-452d-a6f2-7bf9a481f579",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "cityName": "Kolkata"
+      },
+      "type": "n8n-nodes-base.openWeatherMap",
+      "typeVersion": 1,
+      "position": [
+        -1720,
+        -560
+      ],
+      "id": "5f9260b3-e89a-4b45-ab9a-1ac8691604c5",
+      "name": "OpenWeatherMap",
+      "credentials": {
+        "openWeatherMapApi": {
+          "id": "vSNoNcZ0JijAX9ir",
+          "name": "OpenWeatherMap account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://icanhazdadjoke.com/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1520,
+        -560
+      ],
+      "id": "e3f134ca-b7e1-4eb3-bc84-48740f762f84",
+      "name": "Get Joke"
+    },
+    {
+      "parameters": {
+        "url": "https://news.google.com/rss/search?q=technology&hl=en-IN&gl=IN&ceid=IN:en",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -1320,
+        -560
+      ],
+      "id": "d6c772d9-7155-48b7-8217-50f9941008d3",
+      "name": "Get Google News"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "85836ed9-6a2a-4f84-90ab-a63d4f869b3d",
+              "name": "emailSubject",
+              "value": "Your Hourly Digest 📜",
+              "type": "string"
+            },
+            {
+              "id": "495c5408-19e1-4cba-8c72-3a98b43d8b6b",
+              "name": "emailBody",
+              "value": "=<style>\n  @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap');\n\n  .container {\n    font-family: 'Lexend', sans-serif;\n    color: #333;\n    border: 1px solid #e0e0e0;\n    border-radius: 8px;\n    padding: 20px;\n    max-width: 600px;\n    margin: auto;\n  }\n\n  .section {\n    border-top: 1px solid #eee;\n    padding-top: 15px;\n    margin-top: 15px;\n  }\n\n  h3 {\n    color: #1a73e8;\n  }\n\n  .weather-list {\n    list-style-type: none;\n    padding-left: 0;\n  }\n\n  .weather-list li {\n    margin-bottom: 8px;\n  }\n</style>\n\n<div class=\"container\">\n  <h2>Your Hourly Digest 📜</h2>\n  <p>Here is your personalized briefing for the hour.</p>\n\n  <!-- Weather Section -->\n  <div class=\"section\">\n    <h3>🌦️ Weather in <b>{{ $node[\"OpenWeatherMap\"].json.name }}</b></h3>\n    <ul class=\"weather-list\">\n      <li><b>Summary:</b> {{ $node[\"OpenWeatherMap\"].json.weather[0].main }} ({{\n        $node[\"OpenWeatherMap\"].json.weather[0].description }})</li>\n      <li>🌡️ <b>Temperature:</b> {{ $node[\"OpenWeatherMap\"].json.main.temp }}°C</li>\n      <li>😊 <b>Feels Like:</b> {{ $node[\"OpenWeatherMap\"].json.main.feels_like }}°C</li>\n      <li>📉 <b>Min Temp Today:</b> {{ $node[\"OpenWeatherMap\"].json.main.temp_min }}°C</li>\n      <li>📈 <b>Max Temp Today:</b> {{ $node[\"OpenWeatherMap\"].json.main.temp_max }}°C</li>\n      <li>💧 <b>Humidity:</b> {{ $node[\"OpenWeatherMap\"].json.main.humidity }}%</li>\n      <li>💨 <b>Pressure:</b> {{ $node[\"OpenWeatherMap\"].json.main.pressure }} hPa</li>\n      <li>👁️ <b>Visibility:</b> {{ $node[\"OpenWeatherMap\"].json.visibility / 1000 }} km</li>\n      <li>🌬️ <b>Wind Speed:</b> {{ $node[\"OpenWeatherMap\"].json.wind.speed }} m/s</li>\n      <li>🌅 <b>Sunrise (IST):</b> {{ new Date($node[\"OpenWeatherMap\"].json.sys.sunrise *\n        1000).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata', hour12: true\n        }).toLowerCase() }}</li>\n      <li>🌇 <b>Sunset (IST):</b> {{ new Date($node[\"OpenWeatherMap\"].json.sys.sunset *\n        1000).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata', hour12: true\n        }).toLowerCase() }}</li>\n    </ul>\n  </div>\n\n  <!-- Joke Section -->\n  <div class=\"section\">\n    <h3>😂 Joke of the Hour</h3>\n    <p>{{ $node[\"Get Joke\"].json.joke }}</p>\n  </div>\n\n  <!-- AI News Summary Section -->\n  <div class=\"section\">\n    <h3>📰 AI-Powered News Summary</h3>\n    {{ $node[\"Summarize News\"].json.text }}\n  </div>\n\n</div>",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -600,
+        -560
+      ],
+      "id": "ba56b57a-e20d-462c-9be8-f325d3673bd8",
+      "name": "Compose Email"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "50d06f9a-3c60-4361-bdeb-7f80e8ff2ee2",
+              "name": "Timestamp",
+              "value": "={{ new Date().toISOString() }}",
+              "type": "string"
+            },
+            {
+              "id": "2dbcb3e0-f7c8-47c1-90ab-09ce195be238",
+              "name": "ActivityType",
+              "value": "Hourly Digest",
+              "type": "string"
+            },
+            {
+              "id": "a965621e-af23-4874-bf23-5669d48d5f25",
+              "name": "ContentSent",
+              "value": "Weather, Joke, and AI News Summary",
+              "type": "string"
+            },
+            {
+              "id": "e3bade23-adef-4372-b2fe-685477826231",
+              "name": "Status",
+              "value": "Success",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -200,
+        -560
+      ],
+      "id": "bb64837a-7c04-4048-90ee-06a1e1140ca4",
+      "name": "Prepare Log Data"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1jyU5-IP8cOx0174zPt3synlhj2Mv8PXLmDhEahqQZ9U",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Sheet1",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Timestamp",
+              "displayName": "Timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ActivityType",
+              "displayName": "ActivityType",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ContentSent",
+              "displayName": "ContentSent",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        0,
+        -560
+      ],
+      "id": "74f4882d-be58-409b-b1f2-2d402b47e00b",
+      "name": "Add Data",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "AugjNKWwzblP2EAh",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().slice(0, 10);"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1120,
+        -560
+      ],
+      "id": "84b29410-2f23-46ad-a348-6f43f11538f2",
+      "name": "Limit News Items"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an expert news editor. Summarize the key points from the following news headlines into a precise, HTML unordered list (<ul>).\n\n- Each list item (<li>) should be a short, easy-to-read sentence.\n- Do not write an introductory or concluding sentence.\n- Only provide the <ul> element and its contents.\n\nHere are the headlines:\n{{ $items(\"Limit News Items\").map(item => item.json.title).join('\\n') }}",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        -920,
+        -560
+      ],
+      "id": "b7d75e18-470a-40c7-8e32-d1dfe5f73ec8",
+      "name": "Summarize News",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -920,
+        -360
+      ],
+      "id": "e1353f63-63b3-450d-bdd9-e9bf2dd753ee",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "JzMrG9oqsmhAbO2V",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "n8n",
+        "toEmail": "saptarshiroy404@gmail.com",
+        "subject": "={{ $json.emailSubject }}",
+        "html": "={{ $json.emailBody }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        -400,
+        -560
+      ],
+      "id": "9c592f31-92e1-4604-97e6-ad23ad4aeb07",
+      "name": "Send Email",
+      "webhookId": "8aef4a3b-e3cc-47b0-a7ff-9e033ad8dc55",
+      "credentials": {
+        "smtp": {
+          "id": "DEWJGfjdwGa1Hrm6",
+          "name": "SMTP account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "OpenWeatherMap",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenWeatherMap": {
+      "main": [
+        [
+          {
+            "node": "Get Joke",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Joke": {
+      "main": [
+        [
+          {
+            "node": "Get Google News",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Google News": {
+      "main": [
+        [
+          {
+            "node": "Limit News Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compose Email": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Log Data": {
+      "main": [
+        [
+          {
+            "node": "Add Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit News Items": {
+      "main": [
+        [
+          {
+            "node": "Summarize News",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize News": {
+      "main": [
+        [
+          {
+            "node": "Compose Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Summarize News",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email": {
+      "main": [
+        [
+          {
+            "node": "Prepare Log Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Kolkata",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "8f9534f6-67bc-4baa-a723-8a5dacfce1a4",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "708198e63c655426fe5c40d44c0f6d83c07cf72cc24cb1a74b0e2fbd9edc0394"
+  },
+  "id": "lh3A6yxlGJ0dGJhl",
+  "tags": []
+}
