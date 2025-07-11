@@ -1,0 +1,8 @@
+# Ignore the file containing secret credentials
+.env
+
+# Ignore n8n's local SQLite database if not using Docker volumes
+database.sqlite
+
+# Ignore system files
+.DS_Store
