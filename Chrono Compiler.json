@@ -14,10 +14,10 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -1920,
-        -560
+        0,
+        0
       ],
-      "id": "3c447d7b-4a1a-452d-a6f2-7bf9a481f579",
+      "id": "a3bd281e-897c-4fe5-9187-457039b86801",
       "name": "Schedule Trigger"
     },
     {
@@ -27,15 +27,15 @@
       "type": "n8n-nodes-base.openWeatherMap",
       "typeVersion": 1,
       "position": [
-        -1720,
-        -560
+        208,
+        0
       ],
-      "id": "5f9260b3-e89a-4b45-ab9a-1ac8691604c5",
+      "id": "856f5e0c-d17f-4d1e-a387-8608eb0d62b7",
       "name": "OpenWeatherMap",
       "credentials": {
         "openWeatherMapApi": {
           "id": "vSNoNcZ0JijAX9ir",
-          "name": "OpenWeatherMap account"
+          "name": "Chrono Compiler"
         }
       }
     },
@@ -62,10 +62,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1520,
-        -560
+        400,
+        0
       ],
-      "id": "e3f134ca-b7e1-4eb3-bc84-48740f762f84",
+      "id": "e51ecc75-a5ea-4069-9b49-b665bf1e3434",
       "name": "Get Joke"
     },
     {
@@ -76,10 +76,10 @@
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.2,
       "position": [
-        -1320,
-        -560
+        608,
+        0
       ],
-      "id": "d6c772d9-7155-48b7-8217-50f9941008d3",
+      "id": "685134dd-db92-41d0-afee-42b0fb006766",
       "name": "Get Google News"
     },
     {
@@ -105,10 +105,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -600,
-        -560
+        1328,
+        0
       ],
-      "id": "ba56b57a-e20d-462c-9be8-f325d3673bd8",
+      "id": "2453ba64-9a7e-4af5-bf27-04fcb3e2a7e1",
       "name": "Compose Email"
     },
     {
@@ -146,10 +146,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -200,
-        -560
+        1728,
+        0
       ],
-      "id": "bb64837a-7c04-4048-90ee-06a1e1140ca4",
+      "id": "391c13fb-db66-429f-a624-cae37457bc13",
       "name": "Prepare Log Data"
     },
     {
@@ -215,15 +215,15 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.6,
       "position": [
-        0,
-        -560
+        1920,
+        0
       ],
-      "id": "74f4882d-be58-409b-b1f2-2d402b47e00b",
+      "id": "32afedbb-c665-4cfd-b362-d6db59cff3cd",
       "name": "Add Data",
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "AugjNKWwzblP2EAh",
-          "name": "Google Sheets account"
+          "name": "Chrono Compiler"
         }
       }
     },
@@ -234,10 +234,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1120,
-        -560
+        800,
+        0
       ],
-      "id": "84b29410-2f23-46ad-a348-6f43f11538f2",
+      "id": "1088b5f6-ffd4-407b-a410-15f78f074f3b",
       "name": "Limit News Items"
     },
     {
@@ -249,31 +249,12 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.7,
       "position": [
-        -920,
-        -560
+        1008,
+        0
       ],
-      "id": "b7d75e18-470a-40c7-8e32-d1dfe5f73ec8",
+      "id": "ae754809-e9a5-43cf-8b35-a8066b7291f4",
       "name": "Summarize News",
       "executeOnce": true
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
-      "typeVersion": 1,
-      "position": [
-        -920,
-        -360
-      ],
-      "id": "e1353f63-63b3-450d-bdd9-e9bf2dd753ee",
-      "name": "Groq Chat Model",
-      "credentials": {
-        "groqApi": {
-          "id": "JzMrG9oqsmhAbO2V",
-          "name": "Groq account"
-        }
-      }
     },
     {
       "parameters": {
@@ -286,16 +267,35 @@
       "type": "n8n-nodes-base.emailSend",
       "typeVersion": 2.1,
       "position": [
-        -400,
-        -560
+        1520,
+        0
       ],
-      "id": "9c592f31-92e1-4604-97e6-ad23ad4aeb07",
+      "id": "23ca3703-2265-4af7-9666-a51490e2bc18",
       "name": "Send Email",
       "webhookId": "8aef4a3b-e3cc-47b0-a7ff-9e033ad8dc55",
       "credentials": {
         "smtp": {
           "id": "DEWJGfjdwGa1Hrm6",
-          "name": "SMTP account"
+          "name": "Chrono Compiler"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1008,
+        208
+      ],
+      "id": "0e7650bb-df97-42b4-980d-94b6c404579a",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "QPxDfLKDR3qkB1ws",
+          "name": "Chrono Compiler"
         }
       }
     }
@@ -390,17 +390,6 @@
         ]
       ]
     },
-    "Groq Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Summarize News",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Send Email": {
       "main": [
         [
@@ -411,19 +400,28 @@
           }
         ]
       ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Summarize News",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": true,
+  "active": false,
   "settings": {
-    "executionOrder": "v1",
-    "timezone": "Asia/Kolkata",
-    "callerPolicy": "workflowsFromSameOwner"
+    "executionOrder": "v1"
   },
-  "versionId": "8f9534f6-67bc-4baa-a723-8a5dacfce1a4",
+  "versionId": "f586ba4d-29b6-435a-915d-45853dc95b93",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "708198e63c655426fe5c40d44c0f6d83c07cf72cc24cb1a74b0e2fbd9edc0394"
   },
-  "id": "lh3A6yxlGJ0dGJhl",
+  "id": "SdUbouhI4Jd4Luxq",
   "tags": []
 }
