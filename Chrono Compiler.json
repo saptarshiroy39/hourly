@@ -89,7 +89,7 @@
             {
               "id": "85836ed9-6a2a-4f84-90ab-a63d4f869b3d",
               "name": "emailSubject",
-              "value": "Your Hourly Digest 📜",
+              "value": "Chrono Compiler ⏳",
               "type": "string"
             },
             {
@@ -417,7 +417,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "f586ba4d-29b6-435a-915d-45853dc95b93",
+  "versionId": "9caebaa5-b5ea-4ba3-a339-a3ed716f329a",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "708198e63c655426fe5c40d44c0f6d83c07cf72cc24cb1a74b0e2fbd9edc0394"
