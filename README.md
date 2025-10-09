@@ -77,7 +77,7 @@ In **Credentials**, add API keys for:
 - **Google Sheets OAuth2** — Google account authentication
 - **Google Gemini API** — [Get key](https://aistudio.google.com/app/apikey)
 
-## 3️⃣ Save and Run
+### 3️⃣ Save and Run
 
 Once all ***Credentials*** are configured:
 - Click **Save** to store your workflow
