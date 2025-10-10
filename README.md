@@ -73,8 +73,8 @@ Download [`Chrono Compiler.json`](Chrono%20Compiler.json) and import it into n8n
 
 In **Credentials**, add API keys for:
 - **OpenWeatherMap API** — [Get key](https://openweathermap.org/api)
-- **Gmail SMTP** — Your Gmail account
-- **Google Sheets OAuth2** — Google account authentication
+- **Gmail SMTP** — Your Gmail account — [Setup guide](https://support.google.com/mail/answer/185833)
+- **Google OAuth2** — [Create credentials](https://console.cloud.google.com/apis/credentials)
 - **Google Gemini API** — [Get key](https://aistudio.google.com/app/apikey)
 
 ### 3️⃣ Save and Run
