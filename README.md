@@ -41,6 +41,10 @@ Here is a visual overview of the n8n workflow:
 
 ![Chrono Compiler Workflow](workflow-overview.png)
 
+<div align="center">
+  <a href="workflow-overview.png">👁️ Workflow Overview (PNG)</a>
+</div>
+
 ---
 
 ## 🛠️ Tech Stack
