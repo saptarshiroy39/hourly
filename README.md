@@ -1,4 +1,4 @@
-<h1 align="center">Chrono Compiler</h1>
+<h1 align="center"><b>Chrono Compiler</b></h1>
 
 <p align="center">
   <a href="https://github.com/saptarshiroy39/Chrono-Compiler"><b>Chrono Compiler</b></a> is an intelligent email digest system built with <a href="https://n8n.io"><b>n8n</b></a> that automatically compiles and delivers personalized hourly updates straight to your inbox. Stay informed with real-time weather, entertainment, and AI-curated news—all in one beautifully formatted email.
@@ -9,7 +9,7 @@
 ## ✨ Features
 
 * 🌦️ **Real-time Weather Updates** - Current conditions, temperature, humidity, and more (***OpenWeatherMap API***)
-* 😂 **Daily Humor** - A fresh random joke to brighten your hour (***icanhazdadjoke API***)
+* 😂 **Hourly Humor** - A fresh random joke to brighten your hour (***icanhazdadjoke API***)
 * 📰 **AI-Summarized Tech News** - Top 10 technology headlines intelligently summarized (***Google News RSS*** & ***Google Gemini Chat Model***)
 * 📧 **Automated Email Delivery** - Sends a beautifully formatted HTML email every hour (***Gmail SMTP***)
 * 📗 **Activity Logging** - Tracks all digest activities with timestamps in ***Google Sheets*** for monitoring and analytics
@@ -21,6 +21,8 @@
 Here is a visual overview of the n8n workflow:
 
 ![Chrono Compiler Workflow](workflow-overview.png)
+
+---
 
 ## ⚙️ Workflow Components
 
