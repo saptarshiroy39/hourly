@@ -8,11 +8,13 @@
 
 ## ✨ Features
 
-* 🌦️ **Real-time Weather Updates** - Current conditions, temperature, humidity, and more (***OpenWeatherMap API***)
-* 😂 **Hourly Humor** - A fresh random joke to brighten your hour (***icanhazdadjoke API***)
-* 📰 **AI-Summarized Tech News** - Top 10 technology headlines intelligently summarized (***Google News RSS*** & ***Google Gemini Chat Model***)
-* 📧 **Automated Email Delivery** - Sends a beautifully formatted HTML email every hour (***Gmail SMTP***)
-* 📗 **Activity Logging** - Tracks all digest activities with timestamps in ***Google Sheets*** for monitoring and analytics
+| FEATUREs                          | DESCRIPTION                                          | TECHNOLOGY                                    |
+|-----------------------------------|------------------------------------------------------|-----------------------------------------------|
+| 🌦️ **Real-time Weather Updates** | Current conditions, temperature, humidity, and more  | ***OpenWeatherMap API***                      |
+| 😂 **Hourly Humor**              | A fresh random joke to brighten your hour            | ***icanhazdadjoke API***                      |
+| 📰 **AI-Summarized Tech News**   | Top 10 technology headlines intelligently summarized | ***Google News RSS***, ***Gemini 2.5 Flash*** |
+| 📧 **Automated Email Delivery**  | Sends a beautifully formatted HTML email every hour  | ***Gmail SMTP***                              |
+| 📗 **Activity Logging**          | Tracks all digest activities with timestamps         | ***Google Sheets***                           |
 
 ---
 
@@ -26,16 +28,18 @@ Here is a visual overview of the n8n workflow:
 
 ## ⚙️ Workflow Components
 
-1. **Schedule Trigger** - Runs every hour automatically
-2. **OpenWeatherMap** - Fetches current weather data for your location
-3. **Get Joke** - Retrieves a random dad joke via HTTP request
-4. **Get Google News** - Pulls latest tech news from Google News RSS feed
-5. **Limit News Items** - Filters top 10 news articles
-6. **Summarize News** - Uses Google Gemini to create an AI-powered summary
-7. **Compose Email** - Formats all data into a clean HTML email
-8. **Send Email** - Delivers the digest via Gmail SMTP
-9. **Prepare Log Data** - Prepares activity log entry
-10. **Add Data** - Logs the activity to Google Sheets
+| #   | COMPONENTs           | DESCRIPTION                                        | NODEs                      |
+|-----|----------------------|----------------------------------------------------|----------------------------|
+| 1️⃣ | **Schedule Trigger** | Runs every hour automatically                      | ***n8n Schedule Trigger*** |
+| 2️⃣ | **OpenWeatherMap**   | Fetches current weather data for your location     | ***OpenWeatherMap API***   |
+| 3️⃣ | **Get Joke**         | Retrieves a random dad joke via HTTP request       | ***icanhazdadjoke API***   |
+| 4️⃣ | **Get Google News**  | Pulls latest tech news from Google News feed       | ***Google News RSS***      |
+| 5️⃣ | **Limit News Items** | Filters top 10 news articles                       | ***JavaScript Code***      |
+| 6️⃣ | **Summarize News**   | Uses Google Gemini to create an AI-powered summary | ***Google Gemini***        |
+| 7️⃣ | **Compose Email**    | Formats all data into a clean HTML email           | ***n8n Set Node***         |
+| 8️⃣ | **Send Email**       | Delivers the digest via Gmail SMTP                 | ***Gmail SMTP***           |
+| 9️⃣ | **Prepare Log Data** | Prepares activity log entry                        | ***n8n Set Node***         |
+| 🔟 | **Add Data**         | Logs the activity to Google Sheets                 | ***Google Sheets API***    |
 
 ---
 
