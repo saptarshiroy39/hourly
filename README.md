@@ -22,7 +22,7 @@
 
 Here is a visual overview of the n8n workflow:
 
-![Chrono Compiler Workflow](workflow-overview.png)
+![Chrono Compiler Workflow](Chrono-Compiler.png)
 
 ---
 
