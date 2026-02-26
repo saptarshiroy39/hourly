@@ -44,5 +44,5 @@ Here is a visual overview of the n8n workflow:
 ---
 
 <p align="center">
-  Made with <a href="https://n8n.io">n8n</a> by Saptarshi Roy
+  Made with 💙 by <a href="https://hirishi.in/">Saptarshi Roy</a>
 </p>
