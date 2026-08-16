@@ -14,10 +14,10 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        0,
-        0
+        816,
+        -304
       ],
-      "id": "a3bd281e-897c-4fe5-9187-457039b86801",
+      "id": "22b55036-bfec-41c0-bd13-4b17d256395d",
       "name": "Schedule Trigger"
     },
     {
@@ -27,15 +27,15 @@
       "type": "n8n-nodes-base.openWeatherMap",
       "typeVersion": 1,
       "position": [
-        224,
-        0
+        1040,
+        -496
       ],
-      "id": "856f5e0c-d17f-4d1e-a387-8608eb0d62b7",
+      "id": "b70439f6-fff5-4f99-97f7-094aa1bbc27b",
       "name": "OpenWeatherMap",
       "credentials": {
         "openWeatherMapApi": {
-          "id": "vSNoNcZ0JijAX9ir",
-          "name": "Hourly"
+          "id": "9vJoy1OrnsIr1ttm",
+          "name": "Weather - Hourly"
         }
       }
     },
@@ -62,25 +62,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        448,
-        0
+        1040,
+        -304
       ],
-      "id": "e51ecc75-a5ea-4069-9b49-b665bf1e3434",
+      "id": "c64fd0c8-35d7-445e-b7ae-e3dfb9f6d78f",
       "name": "Get Joke"
-    },
-    {
-      "parameters": {
-        "url": "https://news.google.com/rss/search?q=technology",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.rssFeedRead",
-      "typeVersion": 1.2,
-      "position": [
-        672,
-        0
-      ],
-      "id": "685134dd-db92-41d0-afee-42b0fb006766",
-      "name": "Get Google News"
     },
     {
       "parameters": {
@@ -95,7 +81,7 @@
             {
               "id": "495c5408-19e1-4cba-8c72-3a98b43d8b6b",
               "name": "emailBody",
-              "value": "=<style>\n  .container {\n    color: #333;\n    border: 1px solid #e0e0e0;\n    border-radius: 8px;\n    padding: 20px;\n    max-width: 600px;\n    margin: auto;\n  }\n\n  .section {\n    border-top: 1px solid #eee;\n    padding-top: 15px;\n    margin-top: 15px;\n  }\n\n  h3 {\n    color: #1a73e8;\n  }\n\n  .weather-list {\n    list-style-type: none;\n    padding-left: 0;\n  }\n\n  .weather-list li {\n    margin-bottom: 8px;\n  }\n</style>\n\n<div class=\"container\">\n  <h2>Your Hourly Digest 📜</h2>\n  <p>Here is your personalized briefing for the hour.</p>\n\n  <!-- Weather Section -->\n  <div class=\"section\">\n    <h3>🌦️ Weather in <b>{{ $node[\"OpenWeatherMap\"].json.name }}</b></h3>\n    <ul class=\"weather-list\">\n      <li>🧭 <b>Summary:</b> {{ $node[\"OpenWeatherMap\"].json.weather[0].main }} ({{ $node[\"OpenWeatherMap\"].json.weather[0].description }})</li>\n      <li>🌡️ <b>Temperature:</b> {{ $node[\"OpenWeatherMap\"].json.main.temp }}°C</li>\n      <li>😊 <b>Feels Like:</b> {{ $node[\"OpenWeatherMap\"].json.main.feels_like }}°C</li>\n      <li>📉 <b>Min Temp Today:</b> {{ $node[\"OpenWeatherMap\"].json.main.temp_min }}°C</li>\n      <li>📈 <b>Max Temp Today:</b> {{ $node[\"OpenWeatherMap\"].json.main.temp_max }}°C</li>\n      <li>💧 <b>Humidity:</b> {{ $node[\"OpenWeatherMap\"].json.main.humidity }}%</li>\n      <li>🌀 <b>Pressure:</b> {{ $node[\"OpenWeatherMap\"].json.main.pressure }} hPa</li>\n      <li>👁️ <b>Visibility:</b> {{ $node[\"OpenWeatherMap\"].json.visibility / 1000 }} km</li>\n      <li>💨 <b>Wind Speed:</b> {{ $node[\"OpenWeatherMap\"].json.wind.speed }} m/s</li>\n      <li>🌅 <b>Sunrise (IST):</b> {{ new Date($node[\"OpenWeatherMap\"].json.sys.sunrise * 1000).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata', hour12: true }).toLowerCase() }}</li>\n      <li>🌇 <b>Sunset (IST):</b> {{ new Date($node[\"OpenWeatherMap\"].json.sys.sunset * 1000).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata', hour12: true }).toLowerCase() }}</li>\n    </ul>\n  </div>\n\n  <!-- Joke Section -->\n  <div class=\"section\">\n    <h3>😂 Joke of the Hour</h3>\n    <p>{{ $node[\"Get Joke\"].json.joke }}</p>\n  </div>\n\n  <!-- AI News Summary Section -->\n  <div class=\"section\">\n    <h3>📰 AI-Powered News Summary</h3>\n    {{ $node[\"Summarize News\"].json.text }}\n  </div>\n</div>",
+              "value": "=<div style=\"font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace; padding: 15px; max-width: 600px; margin: 0 auto; line-height: 1.5; font-size: 13px;\">\n\n  <div style=\"border-bottom: 2px solid; padding-bottom: 10px; margin-bottom: 25px;\">\n    <h2 style=\"margin: 0; font-size: 20px; text-transform: uppercase;\">Hourly Briefing Report</h2>\n  </div>\n\n  <div style=\"margin-bottom: 25px;\">\n    <h3 style=\"font-size: 14px; text-transform: uppercase; margin: 0 0 10px 0;\">[WEATHER STATS]</h3>\n    <ul style=\"padding-left: 20px; margin: 0;\">\n      <li>Conditions: {{ $json.weather.description }}</li>\n      <li>Temp      : {{ $json.weather.temp }}°C</li>\n      <li>Feels Like: {{ $json.weather.feels_like }}°C</li>\n      <li>Min/Max   : {{ $json.weather.temp_min }}°C / {{ $json.weather.temp_max }}°C</li>\n      <li>Humidity  : {{ $json.weather.humidity }}%</li>\n      <li>Pressure  : {{ $json.weather.pressure }} hPa</li>\n      <li>Visibility: {{ $json.weather.visibility / 1000 }} km</li>\n      <li>Wind      : {{ $json.weather.speed }} m/s ({{ $json.weather.deg }}°)</li>\n    </ul>\n  </div>\n\n  <div style=\"margin-bottom: 25px;\">\n    <h3 style=\"font-size: 14px; text-transform: uppercase; margin: 0 0 10px 0;\">[HOURLY HUMOR]</h3>\n    <div style=\"border-left: 3px solid; padding-left: 12px;\">\"{{ $json.joke }}\"</div>\n  </div>\n\n  <div>\n    <h3 style=\"font-size: 14px; text-transform: uppercase; margin: 0 0 10px 0;\">[TOP INDUSTRY NEWS]</h3>\n    <ol style=\"padding-left: 20px; margin: 0;\">\n      {{ $json.hacker_news_top_5.map(item => `<li>${item.title} (<i>@${item.author}</i>)</li>`).join('') }}\n    </ol>\n  </div>\n\n</div>",
               "type": "string"
             }
           ]
@@ -105,52 +91,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1472,
-        0
+        1712,
+        -304
       ],
-      "id": "2453ba64-9a7e-4af5-bf27-04fcb3e2a7e1",
+      "id": "535ce1dd-109d-45e9-a3ef-3f0435b36ecf",
       "name": "Compose Email"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "50d06f9a-3c60-4361-bdeb-7f80e8ff2ee2",
-              "name": "Timestamp",
-              "value": "={{ new Date().toISOString() }}",
-              "type": "string"
-            },
-            {
-              "id": "2dbcb3e0-f7c8-47c1-90ab-09ce195be238",
-              "name": "ActivityType",
-              "value": "Hourly Digest",
-              "type": "string"
-            },
-            {
-              "id": "a965621e-af23-4874-bf23-5669d48d5f25",
-              "name": "ContentSent",
-              "value": "Weather, Joke, and AI News Summary",
-              "type": "string"
-            },
-            {
-              "id": "e3bade23-adef-4372-b2fe-685477826231",
-              "name": "Status",
-              "value": "Success",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1920,
-        0
-      ],
-      "id": "391c13fb-db66-429f-a624-cae37457bc13",
-      "name": "Prepare Log Data"
     },
     {
       "parameters": {
@@ -166,45 +111,54 @@
           "mode": "name"
         },
         "columns": {
-          "mappingMode": "autoMapInputData",
-          "value": {},
+          "mappingMode": "defineBelow",
+          "value": {
+            "TOP INDUSTRY NEWS": "={{ $('Format Payload').item.json.hacker_news_top_5.map((item, index) => `${index + 1}. ${item.title} (@${item.author})`).join('\\n') }}",
+            "TIMESTAMP": "={{ $('Schedule Trigger').item.json[\"Readable date\"] }}",
+            "WEATHER STATS": "={{ $('Format Payload').item.json.weather.description }}",
+            "HOURLY HUMOR": "={{ $('Format Payload').item.json.joke }}"
+          },
           "matchingColumns": [],
           "schema": [
             {
-              "id": "Timestamp",
-              "displayName": "Timestamp",
+              "id": "TIMESTAMP",
+              "displayName": "TIMESTAMP",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
-              "id": "ActivityType",
-              "displayName": "ActivityType",
+              "id": "WEATHER STATS",
+              "displayName": "WEATHER STATS",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
-              "id": "ContentSent",
-              "displayName": "ContentSent",
+              "id": "HOURLY HUMOR",
+              "displayName": "HOURLY HUMOR",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
-              "id": "Status",
-              "displayName": "Status",
+              "id": "TOP INDUSTRY NEWS",
+              "displayName": "TOP INDUSTRY NEWS",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -215,89 +169,88 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.6,
       "position": [
-        2144,
-        0
+        2160,
+        -304
       ],
-      "id": "32afedbb-c665-4cfd-b362-d6db59cff3cd",
+      "id": "fca83fc3-6e21-4e18-ba7c-a23e5d653c21",
       "name": "Add Data",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "AugjNKWwzblP2EAh",
-          "name": "Hourly"
+          "id": "xLSqMe1RWe3mHeQ5",
+          "name": "Sheet - Hourly"
         }
       }
     },
     {
       "parameters": {
-        "jsCode": "return $input.all().slice(0, 10);"
+        "resource": "all",
+        "limit": 5,
+        "additionalFields": {
+          "tags": [
+            "front_page"
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.hackerNews",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        -112
+      ],
+      "id": "a26c3ea2-c229-4bb9-9ffe-fb012b99794b",
+      "name": "Hacker News"
+    },
+    {
+      "parameters": {
+        "sendTo": "saptarshiroy404@gmail.com",
+        "subject": "={{ $json.emailSubject }}",
+        "message": "={{ $json.emailBody }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1936,
+        -304
+      ],
+      "id": "ebb2fde8-c1ed-48c4-9075-904a091fe175",
+      "name": "Send Email",
+      "webhookId": "0f319c92-2e18-46a0-8a0c-58a538502bdc",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "LvytBoqcaZUicYWM",
+          "name": "Gmail - Hourly"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Extract Weather Data\nconst weatherNode = $('OpenWeatherMap').first().json;\nconst weather = {\n  description: weatherNode.weather[0].description,\n  temp: weatherNode.main.temp,\n  feels_like: weatherNode.main.feels_like,\n  temp_min: weatherNode.main.temp_min,\n  temp_max: weatherNode.main.temp_max,\n  pressure: weatherNode.main.pressure,\n  humidity: weatherNode.main.humidity,\n  visibility: weatherNode.visibility,\n  speed: weatherNode.wind.speed,\n  deg: weatherNode.wind.deg\n};\n\n// 2. Extract Joke Data\nconst jokeNode = $('Get Joke').first().json;\nconst joke = jokeNode.joke;\n\n// 3. Extract Top 5 Hacker News Stories\nconst hnItems = $('Hacker News').all();\nconst hacker_news_top_5 = hnItems.slice(0, 5).map(item => ({\n  title: item.json.title,\n  author: item.json.author,\n}));\n\nreturn [\n  {\n    json: {\n      weather,\n      joke,\n      hacker_news_top_5\n    }\n  }\n];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        896,
-        0
+        1488,
+        -304
       ],
-      "id": "1088b5f6-ffd4-407b-a410-15f78f074f3b",
-      "name": "Limit News Items"
+      "id": "dca2b165-2adc-49a3-902f-fa11d988da70",
+      "name": "Format Payload"
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "=You are an expert news editor. Summarize the key points from the following news headlines into a precise, HTML unordered list (<ul>).\n\n- Each list item (<li>) should be a short, easy-to-read sentence.\n- Do not write an introductory or concluding sentence.\n- Only provide the <ul> element and its contents.\n\nHere are the headlines:\n{{ $items(\"Limit News Items\").map(item => item.json.title).join('\\n') }}",
-        "batching": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.7,
-      "position": [
-        1120,
-        0
-      ],
-      "id": "ae754809-e9a5-43cf-8b35-a8066b7291f4",
-      "name": "Summarize News",
-      "executeOnce": true
-    },
-    {
-      "parameters": {
-        "fromEmail": "n8n",
-        "toEmail": "saptarshiroy404@gmail.com",
-        "subject": "={{ $json.emailSubject }}",
-        "html": "={{ $json.emailBody }}",
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "numberInputs": 3,
         "options": {}
       },
-      "type": "n8n-nodes-base.emailSend",
-      "typeVersion": 2.1,
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
       "position": [
-        1696,
-        0
+        1264,
+        -320
       ],
-      "id": "23ca3703-2265-4af7-9666-a51490e2bc18",
-      "name": "Send Email",
-      "webhookId": "8aef4a3b-e3cc-47b0-a7ff-9e033ad8dc55",
-      "credentials": {
-        "smtp": {
-          "id": "DEWJGfjdwGa1Hrm6",
-          "name": "Hourly"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
-      "typeVersion": 1,
-      "position": [
-        1120,
-        208
-      ],
-      "id": "0e7650bb-df97-42b4-980d-94b6c404579a",
-      "name": "Google Gemini Chat Model",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "QPxDfLKDR3qkB1ws",
-          "name": "Hourly"
-        }
-      }
+      "id": "91b7a72b-082f-4974-a609-9ce4a32ad42b",
+      "name": "Merge"
     }
   ],
   "pinData": {},
@@ -309,6 +262,16 @@
             "node": "OpenWeatherMap",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Get Joke",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Hacker News",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -317,7 +280,7 @@
       "main": [
         [
           {
-            "node": "Get Joke",
+            "node": "Merge",
             "type": "main",
             "index": 0
           }
@@ -328,20 +291,9 @@
       "main": [
         [
           {
-            "node": "Get Google News",
+            "node": "Merge",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Google News": {
-      "main": [
-        [
-          {
-            "node": "Limit News Items",
-            "type": "main",
-            "index": 0
+            "index": 1
           }
         ]
       ]
@@ -357,7 +309,18 @@
         ]
       ]
     },
-    "Prepare Log Data": {
+    "Hacker News": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Send Email": {
       "main": [
         [
           {
@@ -368,18 +331,7 @@
         ]
       ]
     },
-    "Limit News Items": {
-      "main": [
-        [
-          {
-            "node": "Summarize News",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Summarize News": {
+    "Format Payload": {
       "main": [
         [
           {
@@ -390,23 +342,12 @@
         ]
       ]
     },
-    "Send Email": {
+    "Merge": {
       "main": [
         [
           {
-            "node": "Prepare Log Data",
+            "node": "Format Payload",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Gemini Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Summarize News",
-            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -416,26 +357,22 @@
   "active": false,
   "settings": {
     "executionOrder": "v1",
-    "binaryMode": "separate"
+    "binaryMode": "separate",
+    "availableInMCP": false
   },
-  "versionId": "fe65b198-d01e-4ed1-a388-251fa878ac6f",
+  "versionId": "0c8f7273-62d0-4b3e-aa98-fab6d129e220",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "708198e63c655426fe5c40d44c0f6d83c07cf72cc24cb1a74b0e2fbd9edc0394"
+    "instanceId": "6dc181b4455935aacf167a3c4386ec91af04388d35013f2006729c412d95e35d"
   },
-  "id": "SdUbouhI4Jd4Luxq",
+  "nodeGroups": [],
+  "id": "E6lHd7cOHOX0Z5PI",
   "tags": [
     {
-      "updatedAt": "2025-10-13T14:18:58.059Z",
-      "createdAt": "2025-10-13T14:18:58.059Z",
-      "id": "5etKT3nBIfDzRzxR",
-      "name": "⏳"
-    },
-    {
-      "updatedAt": "2025-10-13T14:19:22.911Z",
-      "createdAt": "2025-10-13T14:19:22.911Z",
-      "id": "TX5vR5jWs2fAIAqF",
-      "name": "Saptarshi Roy"
+      "updatedAt": "2026-07-27T04:15:05.756Z",
+      "createdAt": "2026-07-27T04:15:05.756Z",
+      "id": "5Au0G4XE89D7ajjM",
+      "name": "@saptarshiroy39"
     }
   ]
 }
