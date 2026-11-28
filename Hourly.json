@@ -14,10 +14,10 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        816,
-        -304
+        288,
+        96
       ],
-      "id": "22b55036-bfec-41c0-bd13-4b17d256395d",
+      "id": "0858843f-f279-409b-b43b-8d381b9cf07a",
       "name": "Schedule Trigger"
     },
     {
@@ -27,15 +27,15 @@
       "type": "n8n-nodes-base.openWeatherMap",
       "typeVersion": 1,
       "position": [
-        1040,
-        -496
+        512,
+        -96
       ],
-      "id": "b70439f6-fff5-4f99-97f7-094aa1bbc27b",
+      "id": "4bd77e08-bc22-430b-aed5-7e24641dbb3a",
       "name": "OpenWeatherMap",
       "credentials": {
         "openWeatherMapApi": {
-          "id": "9vJoy1OrnsIr1ttm",
-          "name": "Weather - Hourly"
+          "id": "7y5ioor6pWmqZp6i",
+          "name": "Hourly"
         }
       }
     },
@@ -62,10 +62,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1040,
-        -304
+        512,
+        96
       ],
-      "id": "c64fd0c8-35d7-445e-b7ae-e3dfb9f6d78f",
+      "id": "5082951f-f0f9-4d71-a87d-40d059ad93ab",
       "name": "Get Joke"
     },
     {
@@ -91,10 +91,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1712,
-        -304
+        1184,
+        96
       ],
-      "id": "535ce1dd-109d-45e9-a3ef-3f0435b36ecf",
+      "id": "2d1f795c-b54d-4eda-8da4-4cfff9f7ab71",
       "name": "Compose Email"
     },
     {
@@ -169,15 +169,15 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.6,
       "position": [
-        2160,
-        -304
+        1632,
+        96
       ],
-      "id": "fca83fc3-6e21-4e18-ba7c-a23e5d653c21",
+      "id": "8df8fc9a-2d62-4e7c-b8aa-d00b1de72e44",
       "name": "Add Data",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "xLSqMe1RWe3mHeQ5",
-          "name": "Sheet - Hourly"
+          "id": "TLzSQnKEe0GfLa3V",
+          "name": "Hourly"
         }
       }
     },
@@ -194,10 +194,10 @@
       "type": "n8n-nodes-base.hackerNews",
       "typeVersion": 1,
       "position": [
-        1040,
-        -112
+        512,
+        288
       ],
-      "id": "a26c3ea2-c229-4bb9-9ffe-fb012b99794b",
+      "id": "89ef2282-faea-4760-8f42-dc41621de807",
       "name": "Hacker News"
     },
     {
@@ -210,16 +210,16 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        1936,
-        -304
+        1408,
+        96
       ],
-      "id": "ebb2fde8-c1ed-48c4-9075-904a091fe175",
+      "id": "4ce9972b-97af-46d5-ae73-252378166412",
       "name": "Send Email",
       "webhookId": "0f319c92-2e18-46a0-8a0c-58a538502bdc",
       "credentials": {
         "gmailOAuth2": {
-          "id": "LvytBoqcaZUicYWM",
-          "name": "Gmail - Hourly"
+          "id": "Wy0Dzo30L3TRrx9S",
+          "name": "Hourly"
         }
       }
     },
@@ -230,10 +230,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1488,
-        -304
+        960,
+        96
       ],
-      "id": "dca2b165-2adc-49a3-902f-fa11d988da70",
+      "id": "4453b499-348f-421e-ab98-66d6c7405b36",
       "name": "Format Payload"
     },
     {
@@ -246,10 +246,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        1264,
-        -320
+        736,
+        80
       ],
-      "id": "91b7a72b-082f-4974-a609-9ce4a32ad42b",
+      "id": "f0ca0fc3-b4e6-4044-bb51-552417e6f0a2",
       "name": "Merge"
     }
   ],
@@ -357,21 +357,20 @@
   "active": false,
   "settings": {
     "executionOrder": "v1",
-    "binaryMode": "separate",
-    "availableInMCP": false
+    "binaryMode": "separate"
   },
-  "versionId": "0c8f7273-62d0-4b3e-aa98-fab6d129e220",
+  "versionId": "4618a176-9be1-4118-ab6c-eb62e03bfaf9",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "6dc181b4455935aacf167a3c4386ec91af04388d35013f2006729c412d95e35d"
+    "instanceId": "2da22788b0bf09fa97a72f663349bce59fd7b5f3d817df3de98f755854375866"
   },
   "nodeGroups": [],
-  "id": "E6lHd7cOHOX0Z5PI",
+  "id": "Ur83EFnoFoq8kjXE",
   "tags": [
     {
-      "updatedAt": "2026-07-27T04:15:05.756Z",
-      "createdAt": "2026-07-27T04:15:05.756Z",
-      "id": "5Au0G4XE89D7ajjM",
+      "updatedAt": "2026-10-15T12:50:49.016Z",
+      "createdAt": "2026-10-15T12:50:49.016Z",
+      "id": "8yv75HpMZT0RVApl",
       "name": "@saptarshiroy39"
     }
   ]
